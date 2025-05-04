@@ -30,33 +30,33 @@ document.addEventListener('DOMContentLoaded', () => {
             ]
         },
         {
-            title: "Content Categories",
-            description: "Strukturerade innehållskategorier för att skapa en balanserad innehållsmix.",
+            title: "Grön/Orange Coffee Shop Feed",
+            description: "Mockup-flöde för kafé med livfull grön och orange färgpalett, konsekvent design och tydlig placering av kampanjer och produkter.",
             details: [
-                "Definierade innehållspelare",
-                "Variation i posttyper",
-                "Säsongsanpassat innehåll",
-                "Engagemangsoptimering"
+                "Livligt flöde med fokus på kampanjer och nyheter",
+                "Grön och orange färg dominerar flödet konsekvent",
+                "Blandning av produktnyheter, kampanjer och helgerbjudanden",
+                "Viktiga erbjudanden och produkter placeras synligt"
             ]
         },
         {
-            title: "Visual Theme",
-            description: "Färgpalett och visuella element som skapar en enhetlig varumärkesupplevelse.",
+            title: "Restaurang Feed",
+            description: "Mockup-flöde för restaurang med färgstark, lekfull palett och enhetlig design. Fokus på tydlig exponering av mat, dryck och kampanjer.",
             details: [
-                "Varumärkesspecifik färgpalett",
-                "Konsekventa filterjusteringar",
-                "Typografiska riktlinjer",
-                "Visuella designelement"
+                "Färgglatt flöde som lyfter mat, dryck och kampanjer",
+                "Färgstark och livlig palett används genom hela flödet",
+                "Variation av matbilder, drycker och erbjudandeinlägg",
+                "Menyer och kampanjer strategiskt placerade i fokus"
             ]
         },
         {
-            title: "Engagement Strategy",
-            description: "Strategiska inläggstyper designade för att öka engagemang och interaktion.",
+            title: "Dollface Beauty kosmetikafeed (Påhittat varumärke)",
+            description: "Ett elegant flöde för fiktivt skönhetsvarumärke Dollface Beauty. Mjuka neutrala färger hålls konsekventa genom hela flödet, blandning av produktbilder och modellbilder, produkter och texter strategiskt placerade för balans.",
             details: [
-                "Interaktiva story-element",
-                "Engagerande bildtexter",
-                "Call-to-action optimering",
-                "Kommunikationsstrategi"
+                " Elegant flöde för fiktivt skönhetsvarumärke Dollface Beauty",
+                "Mjuka neutrala färger hålls konsekventa genom hela flödet",
+                "Blandning av produktbilder och modellbilder",
+                "Produkter och texter strategiskt placerade för balans"
             ]
         }
     ];
