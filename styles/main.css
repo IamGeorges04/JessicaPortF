@@ -7,6 +7,8 @@
     --font-heading: 'DM Serif Display', serif;
     --font-body: 'Lora', serif;
     --font-sans: 'Open Sans', sans-serif;
+    --transition-speed: 0.3s;
+    --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 * {
@@ -47,6 +49,27 @@ body {
     font-family: var(--font-heading);
     font-size: 2rem;
     color: var(--color-brown);
+    position: relative;
+    transition: transform var(--transition-speed) ease;
+}
+
+.logo:hover {
+    transform: scale(1.1);
+}
+
+.logo::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--color-brown);
+    transition: width var(--transition-speed) ease;
+}
+
+.logo:hover::after {
+    width: 100%;
 }
 
 .nav-links {
@@ -60,12 +83,25 @@ body {
     color: var(--color-black);
     font-family: var(--font-sans);
     font-weight: 500;
-    transition: color 0.3s ease;
+    transition: all var(--transition-speed) ease;
+    position: relative;
+    padding: 0.5rem 0;
 }
 
-.nav-links a:hover,
-.nav-links a.active {
-    color: var(--color-brown);
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--color-brown);
+    transition: width var(--transition-speed) ease;
+}
+
+.nav-links a:hover::after,
+.nav-links a.active::after {
+    width: 100%;
 }
 
 /* Hero Section */
@@ -99,7 +135,10 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(135deg, rgba(139, 69, 19, 0.8) 0%, rgba(44, 44, 44, 0.7) 100%);
+    background: linear-gradient(135deg, 
+        rgba(139, 69, 19, 0.85) 0%, 
+        rgba(44, 44, 44, 0.75) 100%);
+    backdrop-filter: blur(3px);
 }
 
 .hero-content {
@@ -109,6 +148,18 @@ body {
     color: var(--color-white);
     position: relative;
     z-index: 1;
+    animation: fadeInUp 1s ease forwards;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .hero-text {
@@ -154,14 +205,37 @@ h1 {
     text-decoration: none;
     font-family: var(--font-sans);
     font-weight: 500;
-    transition: all 0.3s ease;
+    transition: all var(--transition-speed) ease;
     display: flex;
     align-items: center;
     gap: 0.5rem;
+    position: relative;
+    overflow: hidden;
 }
 
-.btn i {
-    font-size: 1.2rem;
+.btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.2),
+        transparent
+    );
+    transition: left 0.5s ease;
+}
+
+.btn:hover::before {
+    left: 100%;
+}
+
+.btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
 }
 
 .btn-primary {
@@ -181,11 +255,6 @@ h1 {
     border: 2px solid var(--color-white);
 }
 
-.btn:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-}
-
 .btn-primary:hover {
     background-color: var(--color-brown);
     color: var(--color-white);
@@ -203,55 +272,154 @@ footer {
     padding: 2rem;
     background-color: var(--color-white);
     color: var(--color-black);
+    position: relative;
+    box-shadow: var(--box-shadow);
+}
+
+footer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(90deg, 
+        transparent, 
+        var(--color-brown), 
+        transparent);
 }
 
 /* Mobile Menu Button */
 .mobile-menu-btn {
     display: none;
     flex-direction: column;
-    gap: 6px;
+    justify-content: space-between;
+    width: 30px;
+    height: 21px;
     cursor: pointer;
+    z-index: 1001;
+    position: relative;
+    margin-left: auto;
 }
 
 .mobile-menu-btn span {
-    width: 30px;
-    height: 2px;
+    display: block;
+    width: 100%;
+    height: 3px;
     background-color: var(--color-brown);
-    transition: all 0.3s ease;
+    border-radius: 3px;
+    transition: all 0.3s ease-in-out;
 }
 
-/* Responsive Design */
+/* Mobile Navigation */
 @media (max-width: 768px) {
-    .nav-links {
-        display: none;
-    }
-
     .mobile-menu-btn {
         display: flex;
     }
 
+    .nav-links {
+        position: fixed;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100vh;
+        background-color: var(--color-white);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 2rem;
+        transition: all 0.3s ease-in-out;
+        z-index: 1000;
+    }
+
+    .nav-links.active {
+        left: 0;
+    }
+
+    .nav-links li {
+        opacity: 0;
+        transform: translateY(20px);
+        transition: all 0.3s ease-in-out;
+    }
+
+    .nav-links.active li {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    .nav-links.active li:nth-child(1) { transition-delay: 0.1s; }
+    .nav-links.active li:nth-child(2) { transition-delay: 0.2s; }
+    .nav-links.active li:nth-child(3) { transition-delay: 0.3s; }
+    .nav-links.active li:nth-child(4) { transition-delay: 0.4s; }
+    .nav-links.active li:nth-child(5) { transition-delay: 0.5s; }
+
+    .nav-links a {
+        font-size: 1.5rem;
+        padding: 1rem 2rem;
+        display: inline-block;
+        position: relative;
+        color: var(--color-brown);
+    }
+
+    .nav-links a::after {
+        content: '';
+        position: absolute;
+        width: 0;
+        height: 2px;
+        bottom: 0.5rem;
+        left: 2rem;
+        background-color: var(--color-brown);
+        transition: width 0.3s ease-in-out;
+    }
+
+    .nav-links a:hover::after,
+    .nav-links a.active::after {
+        width: calc(100% - 4rem);
+    }
+
+    body.menu-open {
+        overflow: hidden;
+    }
+
+    .header {
+        background-color: var(--color-white);
+    }
+
+    .nav-container {
+        padding: 1rem;
+    }
+
+    /* Hamburger Menu Animation */
+    .mobile-menu-btn.active span:nth-child(1) {
+        transform: translateY(9px) rotate(45deg);
+    }
+
+    .mobile-menu-btn.active span:nth-child(2) {
+        opacity: 0;
+    }
+
+    .mobile-menu-btn.active span:nth-child(3) {
+        transform: translateY(-9px) rotate(-45deg);
+    }
+}
+
+/* Additional responsive breakpoints */
+@media (max-width: 480px) {
     h1 {
-        font-size: 3rem;
+        font-size: 2rem;
     }
 
     .subtitle {
-        font-size: 1.4rem;
+        font-size: 1.1rem;
     }
 
-    .tagline {
-        font-size: 1rem;
+    .nav-links a {
+        font-size: 1.2rem;
     }
 
-    .cta-buttons {
-        flex-direction: column;
-        align-items: center;
-        gap: 1rem;
-    }
-
-    .btn {
-        width: 100%;
-        max-width: 300px;
-        justify-content: center;
+    .logo {
+        font-size: 1.5rem;
     }
 }
 
@@ -720,4 +888,31 @@ footer {
     .contact-form {
         padding: 1.5rem;
     }
+}
+
+.scroll-indicator {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    width: 40px;
+    height: 40px;
+    background-color: var(--color-brown);
+    color: var(--color-white);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    opacity: 0;
+    transition: opacity var(--transition-speed) ease;
+    z-index: 1000;
+}
+
+.scroll-indicator.visible {
+    opacity: 1;
+}
+
+.scroll-indicator:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--box-shadow);
 } 
