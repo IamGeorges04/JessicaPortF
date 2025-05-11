@@ -255,8 +255,14 @@ h1 {
 
 .btn-outline {
     background-color: transparent;
+    color: var(--color-brown);
+    border: 2px solid var(--color-brown);
+    transition: all var(--transition-speed) ease;
+}
+
+.btn-outline:hover {
+    background-color: var(--color-brown);
     color: var(--color-white);
-    border: 2px solid var(--color-white);
 }
 
 .btn-primary:hover {
@@ -264,8 +270,7 @@ h1 {
     color: var(--color-white);
 }
 
-.btn-secondary:hover,
-.btn-outline:hover {
+.btn-secondary:hover {
     background-color: var(--color-white);
     color: var(--color-brown);
 }
@@ -304,6 +309,9 @@ footer::before {
     z-index: 1001;
     position: relative;
     margin-left: auto;
+    background: transparent;
+    border: none;
+    padding: 0;
 }
 
 .mobile-menu-btn span {
@@ -319,12 +327,13 @@ footer::before {
 @media (max-width: 768px) {
     .mobile-menu-btn {
         display: flex;
+        z-index: 1002;
     }
 
     .nav-links {
         position: fixed;
         top: 0;
-        left: -100%;
+        right: 0;
         width: 100%;
         height: 100vh;
         background-color: var(--color-white);
@@ -333,30 +342,40 @@ footer::before {
         align-items: center;
         justify-content: center;
         gap: 2rem;
-        transition: all 0.3s ease-in-out;
-        z-index: 1000;
+        z-index: 1001;
+        padding: 2rem;
+        transform: translateX(100%);
+        transition: transform 0.3s ease-in-out;
+        visibility: hidden;
     }
 
     .nav-links.active {
-        left: 0;
+        transform: translateX(0);
+        visibility: visible;
     }
 
     .nav-links li {
         opacity: 0;
-        transform: translateY(20px);
+        transform: translateX(20px);
         transition: all 0.3s ease-in-out;
     }
 
     .nav-links.active li {
         opacity: 1;
-        transform: translateY(0);
+        transform: translateX(0);
     }
 
-    .nav-links.active li:nth-child(1) { transition-delay: 0.1s; }
-    .nav-links.active li:nth-child(2) { transition-delay: 0.2s; }
-    .nav-links.active li:nth-child(3) { transition-delay: 0.3s; }
-    .nav-links.active li:nth-child(4) { transition-delay: 0.4s; }
-    .nav-links.active li:nth-child(5) { transition-delay: 0.5s; }
+    body.menu-open {
+        overflow: hidden;
+    }
+
+    body.menu-open .header {
+        z-index: 1000;
+    }
+
+    body.menu-open .nav-links {
+        z-index: 1001;
+    }
 
     .nav-links a {
         font-size: 1.5rem;
@@ -364,6 +383,8 @@ footer::before {
         display: inline-block;
         position: relative;
         color: var(--color-brown);
+        width: 100%;
+        text-align: center;
     }
 
     .nav-links a::after {
@@ -372,18 +393,15 @@ footer::before {
         width: 0;
         height: 2px;
         bottom: 0.5rem;
-        left: 2rem;
+        left: 50%;
+        transform: translateX(-50%);
         background-color: var(--color-brown);
         transition: width 0.3s ease-in-out;
     }
 
     .nav-links a:hover::after,
     .nav-links a.active::after {
-        width: calc(100% - 4rem);
-    }
-
-    body.menu-open {
-        overflow: hidden;
+        width: 80%;
     }
 
     .header {
@@ -434,7 +452,7 @@ footer::before {
 }
 
 .about-hero {
-    min-height: 60vh;
+    min-height: 40vh;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -520,7 +538,7 @@ footer::before {
 /* Projects Page Styles */
 .projects-page {
     padding-top: 80px;
-    background-color: var(--color-white);
+    background-color: var(--color-cream);
 }
 
 .projects-hero {
@@ -745,7 +763,7 @@ footer::before {
 /* Contact Page Styles */
 .contact-page {
     padding-top: 80px;
-    background-color: var(--color-white);
+    background-color: var(--color-cream);
 }
 
 .contact-hero {
@@ -925,4 +943,28 @@ footer::before {
 .scroll-indicator:hover {
     transform: translateY(-3px);
     box-shadow: var(--box-shadow);
+}
+
+/* Projects Page Specific Button Styles */
+.projects-page .btn-outline {
+    color: var(--color-brown);
+    border: 2px solid var(--color-brown);
+}
+
+.projects-page .btn-outline:hover {
+    background-color: var(--color-brown);
+    color: var(--color-white);
+}
+
+/* Content Sections */
+.strengths,
+.projects-grid,
+.cv-sections,
+.contact-container {
+    background-color: var(--color-white);
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    margin: 2rem auto;
+    padding: 2rem;
+    max-width: 1200px;
 } 
