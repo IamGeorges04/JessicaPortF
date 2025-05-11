@@ -18,8 +18,26 @@ En modern och responsiv portfolio-webbplats för Jessica Brage, skapad med HTML,
 - **Hem**: Välkomstsida med video-bakgrund och CTA-knappar
 - **Om Mig**: Information om Jessica och hennes kompetens
 - **Mina Projekt**: Galleri med projekt och case studies
+  - **Abarne**: En omfattande marknadsundersökning för ett café, inklusive kundresor, moodboards, prisstrategier och innehållsplanering
+  - **Instagram Flow**: Design och strategi för sociala medier
 - **CV**: Detaljerad CV-information med nedladdningsbar PDF
 - **Kontakt**: Kontaktformulär och kontaktinformation
+
+## Projekt
+
+### Abarne - Marknadsundersökning för Café
+Ett omfattande projekt där Jessica genomförde en djupgående marknadsundersökning för ett café. Projektet inkluderar:
+- Kundresor och storyboards
+- Visuella moodboards
+- Prisstrategi och konkurrensanalys
+- Innehållsplanering och kanalstrategi
+- Rekommendationer för framtida utveckling
+
+### Instagram Flow Design
+Ett kreativt projekt som fokuserar på att skapa ett visuellt sammanhängande och engagerande Instagram-flöde med:
+- Konsekvent design
+- Målgruppsanpassat innehåll
+- Strategisk innehållsplanering
 
 ## Teknisk Information
 
@@ -30,6 +48,9 @@ En modern och responsiv portfolio-webbplats för Jessica Brage, skapad med HTML,
 ├── projects.html
 ├── cv.html
 ├── contact.html
+├── project-pages/
+│   ├── project-abarne.html
+│   └── project-instagramflow.html
 ├── styles/
 │   ├── main.css
 │   ├── project-pages.css
