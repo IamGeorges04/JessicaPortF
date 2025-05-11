@@ -1,0 +1,187 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2822
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+{\*\expandedcolortbl;;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww11520\viewh8400\viewkind0
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 document.addEventListener('DOMContentLoaded', () => \{\
+    const mockupItems = document.querySelectorAll('.mockup-item');\
+    const lightbox = document.querySelector('.lightbox');\
+    const lightboxImg = lightbox.querySelector('img');\
+    const lightboxCaption = lightbox.querySelector('.lightbox-caption');\
+    const closeLightbox = lightbox.querySelector('.close-lightbox');\
+    const prevBtn = lightbox.querySelector('.prev-btn');\
+    const nextBtn = lightbox.querySelector('.next-btn');\
+    \
+    let currentIndex = 0;\
+    const mockupDetails = [\
+        \{\
+            title: "Brun/Beige Coffee Shop Feed",\
+            description: "Ett modernt kaf\'e9fl\'f6de i varma beige- och bruna toner. Fokus p\'e5 att marknadsf\'f6ra nya drycker, specialerbjudanden, kundfavoriter och \'f6ppettider f\'f6r att \'f6ka lojaliteten och framh\'e4va dagliga kampanjer",\
+            details: [\
+                "Beige och brun f\'e4rgpalett.",\
+                "Blandning av drycker och kampanjer.",\
+                "Produkter och texter tydligt placerade.",\
+                "Lugnt och enhetligt bildfl\'f6de"\
+            ]\
+        \},\
+        \{\
+            title: "H\'f6sttema Coffee Shop",\
+            description: "Ett mysigt och inbjudande Instagram-fl\'f6de med h\'f6sttema skapat f\'f6r ett kaf\'e9. Varm f\'e4rgpalett, s\'e4songserbjudanden och frestande bilder p\'e5 kaffe och bakverk.",\
+            details: [\
+                "Mysigt h\'f6sttema med fokus p\'e5 kaffe och bakverk",\
+                "Varm f\'e4rgpalett anv\'e4nds genom hela fl\'f6det",\
+                "Blandning av produkter, milj\'f6bilder och kampanjer",\
+                "Kampanjtexter och produkter \'e4r tydligt placerade"\
+            ]\
+        \},\
+        \{\
+            title: "Gr\'f6n/Orange Coffee Shop Feed",\
+            description: "Mockup-fl\'f6de f\'f6r kaf\'e9 med livfull gr\'f6n och orange f\'e4rgpalett, konsekvent design och tydlig placering av kampanjer och produkter.",\
+            details: [\
+                "Livligt fl\'f6de med fokus p\'e5 kampanjer och nyheter",\
+                "Gr\'f6n och orange f\'e4rg dominerar fl\'f6det konsekvent",\
+                "Blandning av produktnyheter, kampanjer och helgerbjudanden",\
+                "Viktiga erbjudanden och produkter placeras synligt"\
+            ]\
+        \},\
+        \{\
+            title: "Restaurang Feed",\
+            description: "Mockup-fl\'f6de f\'f6r restaurang med f\'e4rgstark, lekfull palett och enhetlig design. Fokus p\'e5 tydlig exponering av mat, dryck och kampanjer.",\
+            details: [\
+                "F\'e4rgglatt fl\'f6de som lyfter mat, dryck och kampanjer",\
+                "F\'e4rgstark och livlig palett anv\'e4nds genom hela fl\'f6det",\
+                "Variation av matbilder, drycker och erbjudandeinl\'e4gg",\
+                "Menyer och kampanjer strategiskt placerade i fokus"\
+            ]\
+        \},\
+        \{\
+            title: "Dollface Beauty kosmetikafeed (P\'e5hittat varum\'e4rke)",\
+            description: "Ett elegant fl\'f6de f\'f6r fiktivt sk\'f6nhetsvarum\'e4rke Dollface Beauty. Mjuka neutrala f\'e4rger h\'e5lls konsekventa genom hela fl\'f6det, blandning av produktbilder och modellbilder, produkter och texter strategiskt placerade f\'f6r balans.",\
+            details: [\
+                " Elegant fl\'f6de f\'f6r fiktivt sk\'f6nhetsvarum\'e4rke Dollface Beauty",\
+                "Mjuka neutrala f\'e4rger h\'e5lls konsekventa genom hela fl\'f6det",\
+                "Blandning av produktbilder och modellbilder",\
+                "Produkter och texter strategiskt placerade f\'f6r balans"\
+            ]\
+        \}\
+    ];\
+\
+    // Function to update lightbox content\
+    function updateLightboxContent(index) \{\
+        const mockup = mockupItems[index];\
+        const img = mockup.querySelector('img');\
+        const details = mockupDetails[index];\
+\
+        lightboxImg.src = img.src;\
+        lightboxImg.alt = img.alt;\
+        lightboxCaption.querySelector('h3').textContent = details.title;\
+        lightboxCaption.querySelector('.description').textContent = details.description;\
+\
+        // Update details list\
+        const detailsList = lightboxCaption.querySelector('.details-list');\
+        detailsList.innerHTML = details.details\
+            .map(detail => `<li>$\{detail\}</li>`)\
+            .join('');\
+\
+        // Update navigation buttons\
+        prevBtn.style.display = index === 0 ? 'none' : 'flex';\
+        nextBtn.style.display = index === mockupItems.length - 1 ? 'none' : 'flex';\
+    \}\
+\
+    // Function to open lightbox\
+    function openLightbox(index) \{\
+        currentIndex = index;\
+        updateLightboxContent(index);\
+        lightbox.classList.add('active');\
+        document.body.style.overflow = 'hidden';\
+    \}\
+\
+    // Function to close lightbox\
+    function closeLightboxFunc() \{\
+        lightbox.classList.remove('active');\
+        document.body.style.overflow = '';\
+        setTimeout(() => \{\
+            lightboxImg.src = '';\
+        \}, 300);\
+    \}\
+\
+    // Add click event to mockup items\
+    mockupItems.forEach((item, index) => \{\
+        item.addEventListener('click', () => \{\
+            openLightbox(index);\
+        \});\
+    \});\
+\
+    // Navigation event listeners\
+    prevBtn.addEventListener('click', () => \{\
+        if (currentIndex > 0) \{\
+            currentIndex--;\
+            updateLightboxContent(currentIndex);\
+        \}\
+    \});\
+\
+    nextBtn.addEventListener('click', () => \{\
+        if (currentIndex < mockupItems.length - 1) \{\
+            currentIndex++;\
+            updateLightboxContent(currentIndex);\
+        \}\
+    \});\
+\
+    // Close lightbox when clicking close button\
+    closeLightbox.addEventListener('click', closeLightboxFunc);\
+\
+    // Close lightbox when clicking outside\
+    lightbox.addEventListener('click', (e) => \{\
+        if (e.target === lightbox) \{\
+            closeLightboxFunc();\
+        \}\
+    \});\
+\
+    // Keyboard navigation\
+    document.addEventListener('keydown', (e) => \{\
+        if (!lightbox.classList.contains('active')) return;\
+\
+        switch (e.key) \{\
+            case 'Escape':\
+                closeLightboxFunc();\
+                break;\
+            case 'ArrowLeft':\
+                if (currentIndex > 0) \{\
+                    currentIndex--;\
+                    updateLightboxContent(currentIndex);\
+                \}\
+                break;\
+            case 'ArrowRight':\
+                if (currentIndex < mockupItems.length - 1) \{\
+                    currentIndex++;\
+                    updateLightboxContent(currentIndex);\
+                \}\
+                break;\
+        \}\
+    \});\
+\
+    // Intersection Observer for fade-in animations\
+    const observerOptions = \{\
+        threshold: 0.2,\
+        rootMargin: '0px 0px -50px 0px'\
+    \};\
+\
+    const observer = new IntersectionObserver((entries) => \{\
+        entries.forEach(entry => \{\
+            if (entry.isIntersecting) \{\
+                entry.target.style.opacity = '1';\
+                entry.target.style.transform = 'translateY(0)';\
+                observer.unobserve(entry.target);\
+            \}\
+        \});\
+    \}, observerOptions);\
+\
+    // Observe all mockup items for scroll animations\
+    mockupItems.forEach(item => \{\
+        item.style.opacity = '0';\
+        item.style.transform = 'translateY(30px)';\
+        observer.observe(item);\
+    \});\
+\}); }

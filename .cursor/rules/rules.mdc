@@ -1,0 +1,83 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+/*
+  Portfolio Project Guidelines for HTML/CSS/JavaScript Projects (Inspired by TypeScript/React Playbook)
+*/
+
+/** Code Style and Structure **/
+- Keep HTML semantic and accessible (use <section>, <article>, <nav>, <main>, <footer>, etc).
+- Use consistent indentation (2 spaces or tabs, stick to one).
+- Structure: index.html, styles/, scripts/, images/, and components/ if modularizing.
+- Keep JavaScript modular with ES6 modules (use import/export).
+- Avoid global variables; encapsulate logic within functions or IIFEs.
+
+/** HTML Best Practices **/
+- Set language: <html lang="sv">
+- Always include meta tags for charset, viewport, and description.
+- Use descriptive alt text for all images.
+- Avoid inline styles; use external CSS.
+- Use <button> and <a> with clear purpose and accessible roles.
+
+/** CSS Styling Rules **/
+- Use a utility-first approach or component-based styles (consider BEM or Tailwind CSS).
+- Structure your styles into base (reset, typography), layout (grid, spacing), and components (buttons, cards).
+- Use CSS variables for colors, spacing, and font sizes.
+- Avoid !important unless absolutely necessary.
+- Support dark mode using media queries or class toggles.
+- Implement hover/focus/active states for interactivity.
+
+/** JavaScript Conventions **/
+- Use const and let; avoid var.
+- Use arrow functions for callbacks and short functions.
+- Keep functions pure and avoid side effects where possible.
+- Use addEventListener instead of inline onclick attributes.
+- Separate data (content) from DOM manipulation logic.
+- Use async/await for async operations; avoid nested callbacks.
+
+/** Responsive Design **/
+- Use mobile-first media queries.
+- Use rem/em for scalable font sizing.
+- Use flexbox or grid for layout.
+- Test across screen sizes using browser dev tools.
+
+/** Accessibility (a11y) **/
+- Use semantic HTML.
+- Provide aria-labels or roles when needed.
+- Ensure color contrast meets WCAG standards.
+- All interactive elements should be keyboard-navigable.
+
+/** Performance & Optimization **/
+- Optimize all images (WebP or compressed PNG/JPEG).
+- Use lazy loading for off-screen images.
+- Minify CSS/JS for production.
+- Defer or async load non-critical JavaScript.
+
+/** UI/UX Enhancements **/
+- Use CSS transitions/animations for feedback.
+- Consider adding a lightbox/modal for image previews.
+- Ensure consistent spacing, padding, and alignment.
+- Maintain consistent button styles and interactive cues.
+- Always design with a "wow factor" in mind—use refined micro-interactions, eye-catching visual effects, and modern layouts.
+- Think like a UX expert: every element should serve both function and form.
+
+/** File & Folder Naming **/
+- Use lowercase with dashes (e.g., instagram-feed.html, project-grid.css).
+- Keep file names descriptive and avoid spaces or special characters.
+
+/** Tools & Deployment **/
+- Use Prettier or similar formatter for consistent code style.
+- Use GitHub or GitLab for version control.
+- Host via Netlify, Vercel, or GitHub Pages.
+- Include a README.md with project purpose and instructions.
+
+/** Bonus Features **/
+- Add a contact form using EmailJS or Formspree.
+- Use Intersection Observer for scroll-triggered animations.
+- Add a theme toggle (dark/light mode).
+- Use localStorage to remember user preferences (like theme).
+- Implement smooth scrolling and scroll-to-top button.
+
+// End of Portfolio Playbook
