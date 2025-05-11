@@ -4,6 +4,7 @@
     --color-brown: #8B4513;
     --color-black: #2C2C2C;
     --color-white: #FFFFFF;
+    --color-text: #4A4A4A;
     --font-heading: 'DM Serif Display', serif;
     --font-body: 'Lora', serif;
     --font-sans: 'Open Sans', sans-serif;
@@ -20,7 +21,7 @@
 body {
     font-family: var(--font-body);
     background-color: var(--color-cream);
-    color: var(--color-black);
+    color: var(--color-text);
     line-height: 1.6;
 }
 
